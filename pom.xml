@@ -9,7 +9,7 @@
     <version>1.0-SNAPSHOT</version>
 
     <name>algorithm_practice</name>
-    <url>http://www.example.com</url>
+    <url>https://github.com/selvindhavidhu/algorithm_practice</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
