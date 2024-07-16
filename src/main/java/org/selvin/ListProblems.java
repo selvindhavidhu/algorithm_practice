@@ -1,7 +1,9 @@
 package org.selvin;
 
+import javax.annotation.Nullable;
+
 public class ListProblems {
-    public ListNode mergeTwoLists(ListNode list1, ListNode list2) {
+    public @Nullable ListNode mergeTwoLists(ListNode list1, ListNode list2) {
         if (list1 == null)
             return list2;
 

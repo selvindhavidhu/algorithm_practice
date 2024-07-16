@@ -7,16 +7,23 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
+    id "net.ltgt.errorprone" version "4.0.1"
 }
 
 repositories {
     mavenLocal()
+    mavenCentral()
     maven {
         url = uri('https://repo.maven.apache.org/maven2/')
     }
 }
 
 dependencies {
+    annotationProcessor "com.uber.nullaway:nullaway:0.11.0"
+    implementation group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.8.6'
+    errorprone "com.google.errorprone:error_prone_core:2.28.0"
+    errorproneJavac "com.google.errorprone:javac:9+181-r4173-1"
+
     testImplementation libs.org.testng.testng
     testImplementation libs.org.assertj.assertj.core
 }
@@ -26,19 +33,25 @@ version = '1.0-SNAPSHOT'
 description = 'algorithm_practice'
 java.sourceCompatibility = JavaVersion.VERSION_21
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            from(components.java)
+//publishing {
+//    publications {
+//        maven(MavenPublication) {
+//            from(components.java)
+//        }
+//    }
+//}
+
+tasks.withType(JavaCompile).configureEach {
+    options.encoding = 'UTF-8'
+    // remove the if condition if you want to run NullAway on test code
+    if (!name.toLowerCase().contains("test")) {
+        options.errorprone {
+            option("NullAway:AnnotatedPackages", "org.selvin")
         }
     }
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = 'UTF-8'
-}
-
-tasks.withType(Javadoc) {
+tasks.withType(Javadoc).configureEach {
     options.encoding = 'UTF-8'
 }
 

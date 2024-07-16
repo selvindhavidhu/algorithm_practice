@@ -1,19 +1,22 @@
 package org.selvin;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 public class ListUtil {
     public static ListNode makeList(int... values) {
         Objects.requireNonNull(values);
 
-        ListNode list = null;
-        ListNode p = null;
+        ListNode list = new ListNode(0);
+        ListNode p = new ListNode(0);
 
+        int i = 0;
         for (int val : values) {
             ListNode newNode = new ListNode(val);
-            if (list == null) {
+            if (i == 0) {
                 p = list = newNode;
+                ++i;
             } else {
                 p.next = newNode;
                 p = p.next;
@@ -42,7 +45,7 @@ public class ListUtil {
         return builder.toString();
     }
 
-    public static ArrayList<Integer> toArrayList(ListNode node) {
+    public static List<Integer> toArrayList(ListNode node) {
         Objects.requireNonNull(node);
 
         ArrayList<Integer> list = new ArrayList<>();
