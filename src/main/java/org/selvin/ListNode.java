@@ -4,6 +4,7 @@ import javax.annotation.Nullable;
 
 public class ListNode {
     int val;
+
     @Nullable ListNode next;
 
     ListNode(int val) {
