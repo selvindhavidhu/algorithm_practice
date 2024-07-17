@@ -1,8 +1,8 @@
 package org.selvin;
 
+import java.util.Arrays;
 import org.assertj.core.api.SoftAssertions;
 import org.testng.annotations.Test;
-import java.util.Arrays;
 
 public class ArrayProblemsTest {
     @Test
