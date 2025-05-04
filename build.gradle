@@ -1,7 +1,7 @@
 plugins {
     id 'java-library'
     id 'maven-publish'
-    id "net.ltgt.errorprone" version "4.0.1"
+    id("net.ltgt.errorprone") version "4.2.0"
     id "com.diffplug.spotless" version "7.0.0.BETA1"
 }
 
@@ -14,9 +14,19 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor "com.uber.nullaway:nullaway:0.11.0"
-    implementation group: 'com.github.spotbugs', name: 'spotbugs-annotations', version: '4.8.6'
-    errorprone "com.google.errorprone:error_prone_core:2.28.0"
+    // https://mvnrepository.com/artifact/com.uber.nullaway/nullaway
+    runtimeOnly("com.uber.nullaway:nullaway:0.12.7")
+
+    // https://mvnrepository.com/artifact/com.github.spotbugs/spotbugs-annotations
+    implementation("com.github.spotbugs:spotbugs-annotations:4.9.3")
+
+    // https://mvnrepository.com/artifact/com.google.errorprone/error_prone_annotations
+    //implementation("com.google.errorprone:error_prone_annotations:2.38.0")
+
+    // https://mvnrepository.com/artifact/com.google.errorprone/javac
+    //implementation("com.google.errorprone:javac:9+181-r4173-1")
+
+    errorprone "com.google.errorprone:error_prone_core:2.38.0"
     errorproneJavac "com.google.errorprone:javac:9+181-r4173-1"
 
     testImplementation libs.org.testng.testng
@@ -26,7 +36,7 @@ dependencies {
 group = 'org.selvin'
 version = '1.0-SNAPSHOT'
 description = 'algorithm_practice'
-java.sourceCompatibility = JavaVersion.VERSION_21
+java.sourceCompatibility = JavaVersion.VERSION_23
 
 spotless {
     format 'misc', {
