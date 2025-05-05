@@ -19,4 +19,27 @@ public class MathProblemsTests {
 
         softAssertions.assertAll();
     }
+
+    @Test
+    public void testMySqrt() {
+        SoftAssertions softAssertions = new SoftAssertions();
+        MathProblems mathProblems = new MathProblems();
+
+        int x = 0;
+        softAssertions.assertThat(mathProblems.mySqrt(x)).isEqualTo(0);
+
+        x = 1;
+        softAssertions.assertThat(mathProblems.mySqrt(x)).isEqualTo(1);
+
+        x = 4;
+        softAssertions.assertThat(mathProblems.mySqrt(x)).isEqualTo(2);
+
+        x = 8;
+        softAssertions.assertThat(mathProblems.mySqrt(x)).isEqualTo(2);
+
+        x = 2147395599;
+        softAssertions.assertThat(mathProblems.mySqrt(x)).isEqualTo(46339);
+
+        softAssertions.assertAll();
+    }
 }
