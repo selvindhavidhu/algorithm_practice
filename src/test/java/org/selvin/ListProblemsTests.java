@@ -31,4 +31,24 @@ public class ListProblemsTests {
 
         softAssertions.assertAll();
     }
+
+    @Test
+    public void addTwoNumbersTests() {
+        ListProblems listProblems = new ListProblems();
+        SoftAssertions softAssertions = new SoftAssertions();
+
+        ListNode list1 = ListUtil.makeList(2, 4, 3);
+        ListNode list2 = ListUtil.makeList(5, 6, 4);
+        softAssertions
+                .assertThat(ListUtil.toString(listProblems.addTwoNumbers(list1, list2)))
+                .isEqualToIgnoringCase("[7, 0, 8]");
+
+        list1 = ListUtil.makeList(9, 9, 9, 9, 9, 9, 9);
+        list2 = ListUtil.makeList(9, 9, 9, 9);
+        softAssertions
+                .assertThat(ListUtil.toString(listProblems.addTwoNumbers(list1, list2)))
+                .isEqualToIgnoringCase("[8, 9, 9, 9, 0, 0, 0, 1]");
+
+        softAssertions.assertAll();
+    }
 }
